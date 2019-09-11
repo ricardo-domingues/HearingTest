@@ -11,6 +11,7 @@ class HearingTestManager {
     this.currentChannelIndex = 0
     this.amplitudeLevel = 0
     this.amplitudes = [-80, -70, -60, -50]
+    this.tone = new Tone.Oscillator()
   }
 
   get evaluationInterval () {
@@ -102,6 +103,8 @@ class HearingTestManager {
   processUserInput() {
     if (this.isPlaying) {
 
+      this.tone.stop()
+      
       if (this.amplitudeLevel -1 >= 0) {
         console.log(`Current Frequency: ${this.currentFrequency} - Current Amplitude: ${this.amplitudes[this.amplitudeLevel - 1]} - Current Channel: ${this.currentChannel}`)
         this.hearingTestEvaluation.recordResult(this.currentFrequency, this.amplitudes[this.amplitudeLevel - 1], this.currentChannel)
@@ -148,16 +151,20 @@ class HearingTestManager {
     * to disconnect previous channel.. This cause that in the first iteration the beep´s only play
     * in the correct channel but when it goes to the other it plays on both...
     */
-    let tone = new Tone.Oscillator().connect(merge[channel]);        
+    this.tone.disconnect()
+
+    this.tone.connect(merge[channel])
+
+    // let tone = new Tone.Oscillator().connect(merge[channel]);        
 
     // Set both amplitude and frequency for given "level"
-    tone.frequency.value = frequency
+    this.tone.frequency.value = frequency
 
-    tone.volume.value = amplitude
-    tone.start()
+    this.tone.volume.value = amplitude
+    this.tone.start()
     this.isBeeping = true
     setTimeout(() => {
-      tone.stop()
+      this.tone.stop()
       this.isBeeping = false
     }, duration)
   }
