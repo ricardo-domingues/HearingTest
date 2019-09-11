@@ -1,10 +1,11 @@
 {
-  "name": "webpack-es6-boilerplate",
-  "version": "1.0.1",
-  "author": "Joseph Luccisano <joseph.luccisano@gmail.com> (https://jluccisano.github.io)",
-  "description": "A delightfully Webpack ES6 Boilerplate",
+  "name": "hearing-test-js",
+  "version": "1.0.0",
+  "author": "Ricardo Domingues",
+  "description": "Hearing test built in javascript",
   "license": "MIT",
   "keywords": [
+    "hearing",
     "webpack",
     "boilerplate",
     "es6",
@@ -14,12 +15,12 @@
     "sass"
   ],
   "bugs": {
-    "url": "https://github.com/jluccisano/webpack-es6-boilerplate/issues",
-    "email": "joseph.luccisano@gmail.com"
+    "url": "https://github.com/ricardo-domingues/HearingTest/issues",
+    "email": "ricardosdomingues95@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jluccisano/webpack-es6-boilerplate.git"
+    "url": "https://github.com/ricardo-domingues/hearing-test.git"
   },
   "main": "src/index.js",
   "scripts": {
@@ -50,5 +51,7 @@
     "webpack-dev-server": "2.7.1",
     "webpack-merge": "4.1.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "tone": "^13.8.25"
+  }
 }
